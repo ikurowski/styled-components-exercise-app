@@ -11,6 +11,16 @@ export default function Main() {
   const [modalOn, setModalOn] = useState(false);
   const [modalText, setModalText] = useState('');
 
+  function deleteUser(event, indexOfUser) {
+    const newUsers = users.filter((user, i) => i !== indexOfUser);
+    setUsers(newUsers);
+    setModalText('User deleted!');
+    setModalOn(true);
+    setTimeout(() => {
+      setModalOn(false);
+    }, 1000);
+  }
+
   return (
     <Container>
       <InputBox
@@ -18,7 +28,7 @@ export default function Main() {
         setModalOn={setModalOn}
         setModalText={setModalText}
       />
-      {users.length > 0 && <OutputBox users={users} />}
+      {users.length > 0 && <OutputBox deleteUser={deleteUser} users={users} />}
       {modalOn && <Modal setModalOn={setModalOn}>{modalText}</Modal>}
     </Container>
   );

@@ -4,14 +4,12 @@ import { styles } from '../styles';
 
 // components
 
-export default function OutputBox({ users }) {
-  console.log(users);
-
+export default function OutputBox({ users, deleteUser }) {
   return (
     <Container>
-      {users.map((user) => (
-        <Output key={Math.random().toString()}>
-         {user.name + ` (${user.age} years old)`}
+      {users.map((user, index) => (
+        <Output key={Math.random().toString()} onClick={event => deleteUser(event, index)}>
+          {user.name + ` (${user.age} years old)`}
         </Output>
       ))}
     </Container>
