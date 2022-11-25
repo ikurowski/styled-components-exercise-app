@@ -68,6 +68,7 @@ const Container = styled.div`
   border-radius: 10px;
   background-color: ${styles.color.secondary};
   margin: 10px;
+  margin-top: 25px;
   padding: 20px;
   width: 70%;
 `;

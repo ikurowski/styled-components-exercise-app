@@ -1,4 +1,6 @@
 import React from 'react';
+
+//components
 import Main from './components/Main';
 import GlobalStyle from './globalStyles';
 

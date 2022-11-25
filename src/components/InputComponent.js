@@ -3,13 +3,10 @@ import styled from 'styled-components';
 
 export default function InputComponent({ headerText, type }) {
   
-  const firstChangeHandler = (e) => {
-    console.log(e.target.value);
-  };
   return (
     <Container>
       <HeaderText>{headerText}</HeaderText>
-      <Input onChange={firstChangeHandler} type={type} />
+      <Input type={type} />
     </Container>
   );
 }
