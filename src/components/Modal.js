@@ -36,8 +36,8 @@ const Container = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  width: 30%;
-  height: 30%;
+  width: 300px;
+  height: 200px;
   background-color: ${styles.color.secondary};
   border-radius: 10px;
   display: flex;
