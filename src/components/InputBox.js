@@ -52,9 +52,9 @@ export default function InputBox({ setUsers, setModalOn, setModalText }) {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <InputComponent type="text" headerText="User name" />
-        <InputComponent type="number" headerText="Age (Years)" />
-        <Button type="submit">Submit</Button>
+        <InputComponent id="userName" type="text" label="User name" />
+        <InputComponent id="age" type="number" label="Age (Years)" />
+        <Button type="submit">Add User</Button>
       </Form>
     </Container>
   );
@@ -86,6 +86,11 @@ const Button = styled.button`
   background-color: ${styles.color.primary};
   color: ${styles.color.textLight};
   cursor: pointer;
+
+  &:hover {
+    scale: 1.05;
+  }
+
   &:focus {
     outline: solid 2px ${styles.color.focusLight};
   }
