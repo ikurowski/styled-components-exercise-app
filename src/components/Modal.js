@@ -1,6 +1,18 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { styles } from '../styles';
+
+function ModalPortal({ children, onClickHandler }) {
+  return (
+    <Container>
+      <ModalContainer>
+        <CloseButton onClick={onClickHandler}>X</CloseButton>
+        <ModalText>{children}</ModalText>
+      </ModalContainer>
+    </Container>
+  );
+}
 
 export default function Modal({ children, setModalOn }) {
   function onClickHandler() {
@@ -14,12 +26,14 @@ export default function Modal({ children, setModalOn }) {
   }
 
   return (
-    <Container onClick={outsideClickHandler}>
-      <ModalContainer>
-        <CloseButton onClick={onClickHandler}>X</CloseButton>
-        <ModalText>{children}</ModalText>
-      </ModalContainer>
-    </Container>
+    <>
+    {ReactDOM.createPortal(
+      <ModalPortal onClickHandler={onClickHandler} outsideClickHandler={outsideClickHandler}>
+        {children}
+      </ModalPortal>,
+      document.getElementById('modal-root')
+    )}
+    </>
   );
 }
 
