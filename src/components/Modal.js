@@ -48,7 +48,8 @@ const ModalContainer = styled.div`
 
 const ModalText = styled.h1`
   font-size: 1rem;
-  margin: 50px
+  margin: 50px;
+  text-align: center;
 `;
 
 const CloseButton = styled.button`
