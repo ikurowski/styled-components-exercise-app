@@ -16,7 +16,7 @@ export default function OutputBox({ users, deleteUser }) {
   );
 }
 
-const Container = styled.div`
+const Container = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,7 @@ const Container = styled.div`
   }
 `;
 
-const Output = styled.div`
+const Output = styled.li`
   height: 2rem;
   width: 100%;
   border-radius: 5px;
@@ -40,4 +40,5 @@ const Output = styled.div`
   margin-top: 0.5rem;
   font-size: 1rem;
   background-color: ${styles.color.textLight};
+  list-style: none;
 `;
