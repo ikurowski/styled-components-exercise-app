@@ -25,9 +25,12 @@ const Container = styled.ul`
   background-color: ${styles.color.secondary};
   margin: 10px;
   padding: 20px;
-  width: 70%;
+  width: 300px;
   & :last-child {
     margin-bottom: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    width: 600px;
   }
 `;
 

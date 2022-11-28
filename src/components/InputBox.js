@@ -70,7 +70,10 @@ const Container = styled.div`
   margin: 10px;
   margin-top: 25px;
   padding: 20px;
-  width: 70%;
+  width: 300px;
+  @media (min-width: 768px) {
+    width: 600px;
+  }
 `;
 
 const Form = styled.form`
