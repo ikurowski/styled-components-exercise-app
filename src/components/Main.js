@@ -11,6 +11,29 @@ export default function Main() {
   const [modalOn, setModalOn] = useState(false);
   const [modalText, setModalText] = useState('');
 
+
+  function handleUsers (e) {
+    let newUser = {
+      name: e.target[0].value,
+      age: e.target[1].value,
+    };
+
+    setUsers((prevUsers) => [...prevUsers, newUser]);
+    e.target[0].value = '';
+    e.target[1].value = '';
+  }
+
+  function showModal () {
+    setModalOn(true);
+  }
+  function hideModal () {
+    setModalOn(false);
+  }
+
+  function onSubmitErrorModalText (text) {
+    setModalText(text);
+  }
+
   function deleteUser(event, indexOfUser) {
     const newUsers = users.filter((user, i) => i !== indexOfUser);
     setUsers(newUsers);
@@ -24,12 +47,12 @@ export default function Main() {
   return (
     <Container>
       <InputBox
-        setUsers={setUsers}
-        setModalOn={setModalOn}
-        setModalText={setModalText}
+        handleUsers={handleUsers}
+        showModal={showModal}
+        onSubmitErrorModalText={onSubmitErrorModalText}
       />
       {users.length > 0 && <OutputBox deleteUser={deleteUser} users={users} />}
-      {modalOn && <Modal setModalOn={setModalOn}>{modalText}</Modal>}
+      {modalOn && <Modal hideModal={hideModal}>{modalText}</Modal>}
     </Container>
   );
 }

@@ -5,48 +5,41 @@ import { styles } from '../styles';
 // components
 import InputComponent from './InputComponent';
 
-export default function InputBox({ setUsers, setModalOn, setModalText }) {
+export default function InputBox({ handleUsers, showModal, onSubmitErrorModalText }) {
   function handleSubmit(e) {
     e.preventDefault();
 
     if (e.target[0].value.trim() === '') {
-      setModalText('Please enter a name');
-      setModalOn(true);
+      onSubmitErrorModalText('Please enter a name');
+      showModal();
       return;
     }
 
     if (e.target[1].value === '') {
-      setModalText('Please enter an age');
-      setModalOn(true);
+      onSubmitErrorModalText('Please enter an age');
+      showModal();
       return;
     }
 
     if (e.target[1].value < 0) {
-      setModalText('Please enter a positive age');
-      setModalOn(true);
+      onSubmitErrorModalText('Please enter a positive age');
+      showModal();
       return;
     }
 
     if (e.target[1].value === '0') {
-      setModalText('Please enter a valid age');
-      setModalOn(true);
+      onSubmitErrorModalText('Please enter a valid age');
+      showModal();
       return;
     }
 
     if (e.target[1].value > 150) {
-      setModalText('Please enter a valid age');
-      setModalOn(true);
+      onSubmitErrorModalText('Please enter a valid age');
+      showModal();
       return;
     }
 
-    let newUser = {
-      name: e.target[0].value,
-      age: e.target[1].value,
-    };
-
-    setUsers((prevUsers) => [...prevUsers, newUser]);
-    e.target[0].value = '';
-    e.target[1].value = '';
+    handleUsers(e)
   }
 
   return (

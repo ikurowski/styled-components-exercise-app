@@ -3,32 +3,30 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { styles } from '../styles';
 
-function ModalPortal({ children, onClickHandler }) {
+function ModalPortal({ children, hideModal, onBackgroundClickHandler }) {
   return (
-    <Container>
+    <Container onClick={onBackgroundClickHandler}>
       <ModalContainer>
-        <CloseButton onClick={onClickHandler}>X</CloseButton>
+        <CloseButton onClick={hideModal}>X</CloseButton>
         <ModalText>{children}</ModalText>
       </ModalContainer>
     </Container>
   );
 }
 
-export default function Modal({ children, setModalOn }) {
-  function onClickHandler() {
-    setModalOn(false);
-  }
+export default function Modal({ children, hideModal }) {
 
-  function outsideClickHandler(e) {
+
+  function onBackgroundClickHandler(e) {
     if (e.target === e.currentTarget) {
-      setModalOn(false);
+      hideModal();
     }
   }
 
   return (
     <>
     {ReactDOM.createPortal(
-      <ModalPortal onClickHandler={onClickHandler} outsideClickHandler={outsideClickHandler}>
+      <ModalPortal hideModal={hideModal} onBackgroundClickHandler={onBackgroundClickHandler}>
         {children}
       </ModalPortal>,
       document.getElementById('modal-root')
